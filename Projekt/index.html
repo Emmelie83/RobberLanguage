@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <!-- Metatag som anger sidans teckenkodning -->
+    <meta charset="utf-8">
+    
+    <!-- Sidans titel -->
+    <title>Rövarspråket</title>
+
+    <!-- Länk till CSS-reset som nollställer webbläsarens CSS-värden -->
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+
+    <!-- Länk till min CSS-fil som liger i samma mapp som denna fil -->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <!-- Länkar till Google Fonts och typsnitten UnifrakturMaguntia och Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+</head>
+
+<!-- Body med en wrapper som omsluter hela sidan -->
+<body class="wrapper">
+
+    <!-- Header med navigationsmeny och sidrubrik -->
+    <header id="site_header">
+        <nav class="nav" id="navbar">
+            <ul>
+                <li>
+                    <!-- Länk till index-sidan -->
+                    <a href="index.html">Hem</a>
+                </li>
+                <li>
+                    <!-- Länk till en sektion inom sidan -->
+                    <a href="#rules_section">Regler</a>
+                </li>
+                <li>
+                    <!-- Länk till en sektion inom sidan -->
+                    <a href="#translator_section">Översättare</a>
+                </li>
+                <li>
+                    <!-- Länk till en sektion inom sidan -->
+                    <a href="#test_section">Språktest</a>
+                </li>
+                <li>
+                    <!-- Länk till en sektion inom sidan -->
+                    <a href="#contact_section">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+            <!-- Sidrubrik -->
+            <h1 id="site_heading">Rövarspråket</h1>
+    </header>
+
+    <!-- Huvudsektion med sidans huvudinnehåll -->
+    <main class="main">
+        <!-- Sektion med regler för rövarspråket  -->
+        <section id="rules_section">
+            <!-- En del av sektionen som ska ha en bakgrundsbild  -->
+            <div class="paper_background">
+                <!-- Text med regler  -->
+                <div class="rules_text">
+                    <!-- Sektionsrubrik  -->
+                    <h2 class="first_h2">Tala rövarspråket som en äkta sjörövare!</h2>
+                    <h3>Grundregel:</h3>
+                    <ul>
+                        <li id="explanation"> Efter varje konsonant lägger du till ett ”o” och därefter 
+                        samma konsonant igen, t.ex. <em>rövarspråket 
+                        – rorövovarorsospoproråkoketot</em></li>
+                    </ul>
+                    <h3>Undantag:</h3> 
+                    <ul>
+                        <li>”x” blir till ”ks”: <em>kex – kokekoksos</em></li>
+                        <li>”ck” blir till ”kk”: <em>tack – totakokkok</em></li>
+                        <li>”c” framför mjuk vokal (e, i, y, ä, ö) blir till ”s”: <em>Cesar – Sosesosaror</em><br> annars till ”k”: <em>camping – kokamompopinongog</em></li>
+                        <li>sje- och tje-ljuden (sj, tj, stj, sk, skj, ssj, sh, sch, ch) betraktas som en enda konsonant och betecknas här ”ʃ”, t.ex. <em>choklad – ʃoʃakokloladod</em></li>
+                        <li>”ch” framför konsonant eller i slutet av ord blir till ”k”: <em>och – okok</em></li>
+                    </ul>
+                </div> 
+            </div>
+        </section>
+        <!-- Avgränsare  -->
+        <hr>
+        <!-- Sektion med översättare till rövarspråket  -->
+        <section id="translator_section">
+            <!-- Sektionsrubrik  -->
+            <h2>Översätt till rövarspråket</h2>
+            <div id="textareas">
+                <!-- Textfält där användaen kan mata in text  -->
+                <textarea class="input" id="input_field">Skriv text som du vill översätta</textarea>
+                <!-- Knapp som visas vid större skärmformat  -->
+                <button id="button_translate1">Översätt</button>
+                <!-- Textfält där användaen inte kan mata in text  -->
+                <textarea readonly class="input" id="output_field"></textarea>
+            </div>
+                <!-- Knapp som visas vid mindre skärmformat  -->
+                <button id="button_translate2">Översätt</button>
+        </section>
+        <!-- Avgränsare  -->
+        <hr>
+        <!-- Sektion med språktest  -->
+        <section id="test_section">
+            <!-- Sektionsrubrik  -->
+            <h2>Testa din språkförståelse</h2>
+            <div id="test">
+                <p id="test_intro">Förstår du vad sjörövarna säger?
+                Här får du sex fraser som du kan testa dig med. 
+                Svarar du rätt belönas du med guldmynt!</p>
+                <!-- Avsnitt som visas med hjälp av Javascript  -->
+                <div id="test_result"> 
+                    <p id="test_result_text"></p>
+                    <div id="test_result_coins"></div>
+                </div>
+                <!-- Knapp för att starta testet  -->
+                <button id="button_start_test">Starta testet</button>
+                <!-- Avsnitt som visas med hjälp av Javascript  -->
+                <div id="test_action">
+                    <p id="test_instructions">Kan du tyda texten nedan? 
+                    Skriv din översättning i rutan och tryck på knappen.</p>
+                    <p id="question_number"></p>
+                    <p id="question"></p>
+                    <input type="text" id="answer">
+                    <button id="button_answer">Svara</button>
+                </div>
+            </div>
+        </div>
+        </section>
+        <!-- Avgränsare  -->
+        <hr>
+        <!-- Sektion med kontaktinformation  -->
+        <section id="contact_section">
+            <div id="contact">
+                <!-- Sektionsrubrik  -->
+                <h2>Kontakt</h2>
+                <p>Jag som ligger bakom denna sida heter Emmelie Johansson. 
+                Har du frågor eller synpunkter? Hör av dig till</p>
+                <address>info@emmeliejohansson.com</address>
+                <img src="pictures/skull.png" alt="En dödskalle" id="skull">
+            </div>
+        </section>
+        <!-- Länkar till Javascript-filer  -->
+        <script src="js/Translator.js"></script>
+        <script src="js/Test.js"></script>
+        <script src="js/StickyNavbar.js"></script>
+        <script src="js/RovarIndex.js"></script>
+    </main>
+        <!-- Footer med copyright-information -->
+        <footer id="footer">
+            <p id="copyright">Copyright © 2023 - Emmelie Johansson</p>
+        </footer>
+</body>
+</html>

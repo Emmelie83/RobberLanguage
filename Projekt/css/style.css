@@ -1,0 +1,739 @@
+/* TOC:
+1. Clear Fix
+2. Header
+3. Main
+    3.1 Informationsdelen
+    3.2 Översättningsdelen
+    3.3 Testdelen
+    3.4 Kontaktdelen
+5. Footer
+6. Anpassning till olika skärmstorlekar
+
+/******************************************************************************************************/
+/* 1. CLEAR FIX 
+* Regler som ska tillämpas på hela sidan om inget annat anges */
+
+/* Sidans text- och bakgrundsfärg */
+body {
+    color: #222;
+    background-color: #cfcfcf;
+}
+
+/* Sidans huvudsakliga typsnitt */
+body,
+input,
+select,
+textarea {
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6em;
+}
+
+/* Paragrafer och ul-listor ges en nedre marginal */
+ul,
+p {
+    margin: 0 0 1em 0;
+}
+
+/* Länkar ges blå understrykning */
+a {
+    text-decoration: underline;
+    color: blue;
+}
+
+/* Understrykningen tas bort om man hovrar över länken */
+a:hover {
+    text-decoration: none;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+/* Rubriker på nivå 1 och 2 får annat typsnitt och centreras*/
+h1,
+h2 {
+    font-family: "UnifrakturMaguntia", "Times New Roman", Times, serif;
+    text-align: center;
+}
+
+/* Rubriker på nivå 1 är gula*/
+h1 {
+    font-size: 90px;
+    color: #E3C31A;
+}
+
+h2 {
+    font-size: 36px;
+    line-height: 1.5em;
+    padding-bottom: 0.5em;
+}
+
+/* Rubrikerna på nivå 3 behåller sidans huvudsakliga typsnitt men görs feta */
+h3 {
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+/* Knappar får gul bakgrundsfärg och annat typsnitt */
+button {
+    /* Knapparna centreras på sidan */
+    margin: auto;
+    display: block;
+    background-color: #E3C31A;
+    /* Hörnen rundas lätt */
+    border-radius: 4%;
+    padding: 0.3em 0.6em;
+    font-family: "UnifrakturMaguntia", "Times New Roman", serif;
+    font-size: 26px;
+}
+
+
+/******************************************************************************************************/
+/* 2. HEADER 
+* Med en heltäckande bakgrundsbild, navigationsmeny och sidrubrik*/
+
+header {
+    /* Headern ska ha en bagrundsbild som sträckersig över sidans 
+    hela bredd och har en höjd på 400px*/
+    background-image: url("../pictures/header.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Sidan får en bakgrundsfärg som visas om bakgrundsbilden inte skulle visas */
+    background-color: #222;
+}
+
+/* Sidrubriken får padding upptill och nedtill och centreras på sidan */
+#site_heading {
+    padding-top: 3.7em;
+    padding-bottom: 4em;
+    text-align: center;
+}
+
+
+/* Menyn placeras till höger på sidan och får en padding upptill och till höger*/
+nav ul {
+    padding-top: 15px;
+    text-align: right;
+    padding-right: 4em;
+}
+
+/* Menyn görs sticky när man skrollar och får då en svart bakgrund*/
+.nav.sticky {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color: black;
+    height: 3.5em;
+}
+
+/* Kompensera för den höjd som försvinner när menyn hamnar utanför flödet */
+.navbar_offset_margin {
+    padding-top: 3.5em;
+}
+
+/* En ul-lista görs om till navigationsmeny */
+header nav ul li {
+    display: inline;
+    margin: 0.9em;
+}
+
+/* Menypunkterna får tunnare text, versal stil och vit färg */
+header nav ul li a {
+    font-weight: 300;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
+/* Menypunkterna blir gula när man för muspekaren över texten */
+header nav ul li a:hover {
+    color: #E3C31A;
+}
+
+
+/******************************************************************************************************/
+/* 3. Main */
+
+/* 3.1 Informationsdelen *****************************************************************************/
+
+/* Sidsektionerna får padding */
+section {
+    padding: 4em 0;
+}
+
+/* För den första sektionen tas paddingen bort */
+#rules_section {
+    padding: 0;
+}
+
+/* En bakgrunsbild läggs till den första sektionsdelen*/
+.paper_background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../pictures/paper.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: -3em;
+    min-height: 530px;
+    margin-bottom: 4em;
+}
+
+/* Textstycket får en maxbredd på 600 px och centreras */
+.rules_text {
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Den första sektionens sektionsrubrik får en mindre storlek */
+h2.first_h2 {
+    font-size: 30px;
+    line-height: 1em;
+}
+
+/* 3.2 Översättningsdelen *****************************************************************************/
+
+/* Input- och outputfälten får en maxbredd på 500 px och maxhöjd på 300 px, en ram
+och lätt rundade hörn */
+#input_field,
+#output_field {
+    width: 40%;
+    max-width: 500px;
+    height: 300px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #64635D;
+    border-radius: 4px;
+    background-color: #E6E2D2;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+/* Fälten placeras bredvid varandra med ett avstånd på 2em */
+#textareas {
+    display: flex;
+    justify-content: center;
+    column-gap: 2em;
+}
+
+/* Den ena knappen döljs */
+#button_translate1 {
+    display: none;
+}
+
+/* Knapparna blir grå med vit text när muspekaren förs över dem */
+button:hover {
+    background-color: gray; 
+    color: white;
+}
+
+/* 3.2 Testdelen *****************************************************************************/
+
+/* Textstyckena i test- och kontaktdelen får en bredd på 50 procent och en maxbredd
+på 500 px, och de centreras */
+#test,
+#contact {
+    width: 50%;
+    max-width: 500px;
+    text-align: center;
+    margin: auto;
+}
+
+/* Denna del döljs */
+#test_action {
+    display: none;
+}
+
+#test_instructions,
+#question_number {
+    padding-bottom: 0.5em;
+}
+
+/* Frågonrumret får ett större typsnitt */
+#question_number {
+    font-size: 18px;
+}
+
+/* Svarsfältet gör 20em brett och får en nedre margin*/
+#answer {
+    min-width: 20em;
+    margin-bottom: 1.5em;
+}
+
+/* Resultattexten går ett större typsnitt och en nedre margin */
+#test_result_text,
+#test_result_coins {
+    margin-bottom: 2em;
+    font-size: 18px;
+    line-height: 1.5em;
+}
+
+/* Bilderna får en maxbredd*/
+#coin {
+    max-width: 12%;
+}
+#crab {
+    max-width: 30%;
+}
+
+/* 3.2 Kontaktdelen *****************************************************************************/
+
+
+#skull {
+    max-width: 25%;
+    padding-top: 5em;
+}
+
+
+/******************************************************************************************************/
+/* 5. FOOTER *****************************************************************************************/
+
+/* Sidfoten får svart bakgrund, vit text och en höjd på 140px */
+#footer {
+    background-color: black;
+    color: white;
+    height: 140px;
+}
+
+/* Texten i sidfoten får tunnare font och padding upptill */
+footer p {
+    padding-top: 80px;
+    font-weight: 300;
+    text-align: center;
+}
+
+
+/******************************************************************************************************/
+/* 6. Anpassning till olika skärmstorlekar  ***********************************************************/
+
+@media screen and (max-width: 1700px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    /* Sidrubrikens padding justeras så att den hamnar på rätt höjd */
+    #site_heading {
+        padding-top: 3em;
+        padding-bottom: 3.6em;
+    }
+}
+
+
+@media screen and (max-width: 1500px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    /* Sidrubrikens padding justeras så att den hamnar på rätt höjd */
+    #site_heading {
+        padding-top: 2.6em;
+        padding-bottom: 3.2em;
+    }
+
+}
+
+
+@media screen and (max-width: 1300px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    /* Sidrubrikens padding justeras så att den hamnar på rätt höjd */
+    #site_heading {
+        padding-top: 2.3em;
+        padding-bottom: 3.1em;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 70px;
+    }
+
+    /* Sidrubrikens padding justeras så att den hamnar på rätt höjd */
+    #site_heading {
+        padding-top: 2.8em;
+        padding-bottom: 3.5em;
+    }
+}
+
+
+@media screen and (max-width: 1080px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    /* Menyn centreras på sidan */
+    nav ul {
+        text-align: center;
+        padding-right: 0;
+    }
+
+    h1 {
+        font-size: 60px;
+    }
+
+    #site_heading {
+        padding-top: 2.5em;
+        padding-bottom: 3.4em;
+    }
+
+    h2 {
+        font-size: 34px;
+    }
+
+    h2.first_h2 {
+        font-size: 24px;
+    }
+
+    button {
+        font-size: 22px;
+    }
+
+    .paper_background {
+        background-image: url('../pictures/paper500.png');
+        min-height: 890px;
+        margin-top: -8em;
+        margin-bottom: -1em;
+    }
+
+    .rules_text {
+        max-width: 320px;
+    }
+
+    #skull {
+        max-width: 30%;
+        padding-top: 5em;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    nav ul {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 55px;
+    }
+
+    #site_heading {
+        padding-top: 2em;
+        padding-bottom: 3em;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    section {
+        padding: 3em 0;
+    }
+
+    .paper_background {
+        background-image: url('../pictures/paper450.png');
+        margin-top: -10em;
+        margin-bottom: -1em;
+    }
+
+    .rules_text {
+        padding-top: 1em;
+    }
+
+    #input_field,
+    #output_field {
+        width: 60%;
+    }
+    /* Översättningsdelens input- och utputfält placeras över varandra istället för bredvid */
+    #textareas {
+        flex-direction: column;
+        row-gap: 2em;
+        align-items: center;
+    }
+
+    #input_field {
+        margin-bottom: 0;
+    }
+
+    #button_translate1 {
+        display: block;
+    }
+
+    #button_translate2 {
+        display: none;
+    }
+
+    #test,
+    #contact {
+        width: 60%;
+    }
+
+    #skull {
+        max-width: 30%;
+        padding-top: 5em;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    section {
+        padding: 2em 0;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    #site_heading {
+        padding-top: 2.5em;
+        padding-bottom: 3em;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    header nav ul li {
+        margin: 0.5em;
+    }
+
+    #explanation, 
+    ul,
+    h3 {
+        font-size: 14px;
+        line-height: 1.6em;
+    }
+
+    #test_result_text {
+        font-size: 16px;
+    }
+
+    .rules_text {
+        max-width: 300px;
+        margin-top: -2em;
+    }
+
+    /* Testets svarsruta görs mindre */
+    #answer {
+        min-width: 15em;
+    }
+
+    #skull {
+        max-width: 30%;
+        padding-top: 4em;
+    }
+}
+
+
+@media screen and (max-width: 550px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin: 0.4em;
+    }
+
+
+    #site_heading {
+        padding-top: 2em;
+        padding-bottom: 2.5em;
+    }
+
+    .paper_background {
+        background-image: url('../pictures/paper400.png');
+        margin-top: -12em;
+        margin-bottom: -5em;
+    }
+
+    .rules_text {
+        max-width: 285px;
+        padding-top: 4em;
+    }
+
+    #skull {
+        padding-top: 4em;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin: 0.4em;
+    }
+
+    #site_heading {
+        padding-top: 2.5em;
+        padding-bottom: 3em;
+    }
+
+    h1 {
+        font-size: 46px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h2.first_h2 {
+        font-size: 20px;
+    }
+
+    #explanation,
+    ul,
+    h3 {
+        font-size: 13px;
+        line-height: 1.5em;
+    }
+
+    nav ul {
+        font-size: 12px;
+    }
+
+    .paper_background {
+        background-image: url('../pictures/paper350.png');
+        margin-top: -14em;
+        margin-bottom: -8em;
+    }
+
+    .rules_text {
+        max-width: 240px;
+        padding-top: -2.5em;
+    }
+
+    /* Testets svarsruta görs mindre */
+    #answer {
+        min-width: 10em;
+    }
+
+    #skull {
+        padding-top: 3em;
+    }
+
+    /* Copyright-informationen i footern får mindre typsnitt */
+    #copyright {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin: 0.3em;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    #site_heading {
+        padding-top: 2.3em;
+        padding-bottom: 2.5em;
+    }
+
+    #explanation,
+    ul,
+    h3 {
+        font-size: 11px;
+        line-height: 1.5em;
+    }
+
+    .paper_background {
+        background-image: url('../pictures/paper300.png');
+        margin-top: -16em;
+        margin-bottom: -10em;
+    }
+
+    .rules_text {
+        max-width: 210px;
+    }
+
+    #skull {
+        width: 25%;
+        padding-top: 3em;
+    }
+
+    #copyright {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    nav ul {
+        font-size: 11px;
+    }
+
+    #site_heading {
+        padding-top: 1em;
+        padding-bottom: 2em;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h2.first_h2 {
+        font-size: 16px;
+    }
+
+
+    #explanation,
+    ul,
+    h3 {
+        font-size: 10px;
+        line-height: 1.5em;
+    }
+
+    .paper_background {
+        background-image: url('../pictures/paper250.png');
+        margin-top: -18em;
+        margin-bottom: -14em;
+    }
+
+    .rules_text {
+        max-width: 200px;
+        padding-top: -4em;
+    }
+}
+
+
+
