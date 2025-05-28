@@ -11,9 +11,13 @@ class Translator {
         this.buttonTranslate1 = document.getElementById("button_translate1");
         this.buttonTranslate2 = document.getElementById("button_translate2");
         // En array med alfabetets konsonanter, versala och gemena
-        this.cons = ["b", "B", "d", "D", "f", "F", "g", "G", "h", "H", "j", "J", "k", "K",
-            "l", "L", "m", "M", "n", "N", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T",
-            "v", "V", "w", "W", "z", "Z", "ʃ"];
+      this.cons = [
+        "b", "B", "d", "D", "f", "F", "g", "G", "h", "H", "j", "J",
+        "k", "K", "l", "L", "m", "M", "n", "N", "p", "P", "q", "Q",
+        "r", "R", "s", "S", "t", "T", "v", "V", "w", "W", "z", "Z",
+        "🦅", "🐥", "♛", "♚", "♜", "♝", "☠", "☃", "⚓", "⚓︎", "🎯", "🎯︎",
+        "⚡", "⚡︎", "☢", "☣", "♞", "♘", "♟", "♙", "🔪", "🗡️"
+        ];
         // En array med alfabetets vokaler
         this.vowel = ["a", "A", "o", "O", "u", "U", "å", "Å", "e", "E", "i", "I", "y", "Y", "ä", "Ä", "ö", "Ö"];
         // En array med alfabetets hård"a vokaler
@@ -24,30 +28,98 @@ class Translator {
         /* Lista med tecken som byts ut. Enligt reglerna för rövarspråket ska "x" bli 
         till "ks", "ck" bli till "kk" och "och" bli till "ok". Sje- och tj-ljudet ska behandlas 
         som en konsonant, som här betecknas "ʃ". */
-        this.replacements = [
-            [/X/g, "Ks"],
-            [/x/g, "ks"],
-            // Ck förekommer aldrig i början av ord
-            [/ck/gi, "kk"],
-            [/Och\s/g, "Ok "],
-            // Mellanslag före för att undvika ord som Loch i t.ex. Loch Ness
-            [/\soch/gi, " ok"],
-            [/Stj/gi, "ʃ"],
-            [/Ssj/gi, "ʃ"],
-            [/Sj/gi, "ʃ"],
-            [/Tj/gi, "ʃ"],
-            [/Tch/gi, "tʃ"],
-            [/sch/gi, "ʃ"],
-            [/Sch/gi, "ʃ"],
-            [/Sh/gi, "ʃ"],
-            [/Skj/gi, "ʃ"],
-            [/Kj/gi, "ʃ"],
-            [/Ske/gi, "ʃe"],
-            [/Ski/gi, "ʃi"],
-            [/Sky/gi, "ʃy"],
-            [/Skä/gi, "ʃä"],
-            [/Skö/gi, "ʃö"],
-        ];
+      this.replacements = [
+        [/X/g, "Ks"],
+        [/x/g, "ks"],
+        // Ck förekommer aldrig i början av ord
+        [/ck/gi, "kk"],
+        [/Och\s/g, "Ok "],
+        [/\soch/gi, " ok"],
+
+        [/Ch/g, "🦅"],  
+        [/ch/g, "🐥"],   
+
+        [/Stj/g, "♛"],
+        [/stj/g, "♚"],
+
+        [/Tch/g, "♜"],
+        [/tch/g, "♝"],
+
+        [/Ssj/g, "☠"],
+        [/ssj/g, "☃"],
+
+        [/Sj/g, "⚓"],
+        [/sj/g, "⚓︎"], 
+
+        [/Tj/g, "🎯"],
+        [/tj/g, "🎯︎"],
+
+        [/Sch/g, "⚡"],
+        [/sch/g, "⚡︎"],
+
+        [/Sh/g, "☢"],
+        [/sh/g, "☣"],
+
+        [/Skj/g, "♞"],
+        [/skj/g, "♘"],
+
+        [/Kj/g, "♟"],
+        [/kj/g, "♙"],
+
+        [/Ske/g, "🔪e"],
+        [/ske/g, "🗡️e"],
+        [/Ski/g, "🔪i"],
+        [/ski/g, "🗡️i"],
+        [/Sky/g, "🔪y"],
+        [/sky/g, "🗡️y"],
+        [/Skä/g, "🔪ä"],
+        [/skä/g, "🗡️ä"],
+        [/Skö/g, "🔪ö"],
+        [/skö/g, "🗡️ö"]
+      ];
+      
+      this.reverseReplacements = [
+        [/🦅/g, "Ch"],
+        [/🐥/g, "ch"],
+
+        [/♛/g, "Stj"],
+        [/♚/g, "stj"],
+
+        [/♜/g, "Tch"],
+        [/♝/g, "tch"],
+
+        [/☠/g, "Ssj"],
+        [/☃/g, "ssj"],
+
+        [/⚓/g, "Sj"],
+        [/⚓︎/g, "sj"],
+
+        [/🎯/g, "Tj"],
+        [/🎯︎/g, "tj"],
+
+        [/⚡/g, "Sch"],
+        [/⚡︎/g, "sch"],
+
+        [/☢/g, "Sh"],
+        [/☣/g, "sh"],
+
+        [/♞/g, "Skj"],
+        [/♘/g, "skj"],
+
+        [/♟/g, "Kj"],
+        [/♙/g, "kj"],
+
+        [/🔪e/g, "Ske"],
+        [/🗡️e/g, "ske"],
+        [/🔪i/g, "Ski"],
+        [/🗡️i/g, "ski"],
+        [/🔪y/g, "Sky"],
+        [/🗡️y/g, "sky"],
+        [/🔪ä/g, "Skä"],
+        [/🗡️ä/g, "skä"],
+        [/🔪ö/g, "Skö"],
+        [/🗡️ö/g, "skö"]
+      ];
     
         /* Funktioner som körs när användaren trycker på knappen (knapp1 eller knapp2 visas 
         beroende på skärmstorlek) */
@@ -72,81 +144,70 @@ class Translator {
         return replacedText;
     }
   
-    /* Funktion som tar hänsyn till vissa specialregler som gäller när c följs av vokal eller h
+    /* Funktion som tar hänsyn till vissa specialregler som gäller när c följs av vokal
     * @param textArr - lista med tecknen från den text som användaren matat in, fast med vissa
     * tecken utbytta enligt funktionen replace(text).
     * @return newTextArray - lista med tecknen från textArr fast med justeringar
-    * gjorda för c då c följs av vokal eller h
+    * gjorda för c då c följs av vokal
     */
-    changeChandC(textArr) {
-        const newTextArr = [];
+    changeC(textArr) {
+        const newTextArrWithIcons = [];
     
         for (let i = 0; i < textArr.length; i++) {
             const currentChar = textArr[i];
             const nextChar = textArr[i + 1];
             const previousChar = textArr[i - 1];
-            // Justeringar görs när c följs av h
-            if (currentChar === "h" || currentChar === "H") {
-                if ((previousChar === "C" || previousChar === "c") && this.vowel.includes(nextChar)) {
-                    newTextArr.pop();
-                    // c + h + vokal blir till ʃ
-                    newTextArr.push("ʃ");
-                } else if (previousChar === "C") {
-                    newTextArr.pop();
-                    // C + h blir till K
-                    newTextArr.push("K");
-                } else if (previousChar === "c") {
-                    newTextArr.pop();
-                    // c + h blir till k
-                    newTextArr.push("k");
-                } else {
-                    // Om h inte föregås av c görs ingen ändring
-                    newTextArr.push(currentChar);
-                }
-            // Justeringar görs när c följs av mjuk respektive hård vokal
-            } else if (currentChar === "C") {
+            if (currentChar === "C") {
                 if (this.vowelSoft.includes(nextChar)) {
                     // C följd av mjuk vokal blir till S
-                    newTextArr.push("S");
+                  newTextArrWithIcons.push("S");
                 } else {
                     // C följd av hård vokal blir till K
-                    newTextArr.push("K");
+                  newTextArrWithIcons.push("K");
                 }
             } else if (currentChar === "c") {
                 if (this.vowelSoft.includes(nextChar)) {
                     // c följd av mjuk vokal blir till s
-                    newTextArr.push("s");
+                  newTextArrWithIcons.push("s");
                 } else {
                     // c följd av hård vokal blir till k
-                    newTextArr.push("k");
+                  newTextArrWithIcons.push("k");
                 }
             } else {
                 // För alla andra tecken görs ingen ändring
-                newTextArr.push(currentChar);
+              newTextArrWithIcons.push(currentChar);
             }
         }
         // Den nya listan returneras
-        return newTextArr;
+        return newTextArrWithIcons;
     }
     
     /* Funktion som översätter till rövarspråket
-    * @param newTextArr - lista med tecknen från den text som användaren matat in, fast med
+    * @param newTextArrWithIcons - lista med tecknen från den text som användaren matat in, fast med
     * vissa tecken utbytta enligt funktionen replace() och andra enligt funktionen 
-    * changeChandC()
-    * @return newText - string med den översatta texten
+    * changeC()
+    * @return translatedTextArr - string med den översatta texten
     */
-    translateText(newTextArr) {
-        let newText = "";
-        for (const element of newTextArr) {
+  translateTextWithIcons(newTextArrWithIcons) {
+        let translatedText = "";
+    for (const element of newTextArrWithIcons) {
             const currentChar = element;
-            newText += currentChar;
+      translatedText += currentChar;
             if (this.cons.includes(currentChar)) {
-                newText += "o" + currentChar.toLowerCase();
+              translatedText += "o" + currentChar.toLowerCase();
             }
         }
-      return newText;
-    }
+      return translatedText;
+  }
   
+  reverse(translatedText) {
+    let reversedText = translatedText;
+    for (const [pattern, reverseReplacement] of this.reverseReplacements) {
+      reversedText = reversedText.replace(pattern, reverseReplacement);
+    }
+    return reversedText;
+  }
+
     /* Funktion som hämtar den text som användaren matat in, kör funktionen replace(), 
     * delar upp strängen i tecken som sparas i en lista, kör funktionen changeChandC()
     * och funktionen translateText() och slutligen skriver ut den översatta texten i output-
@@ -156,8 +217,9 @@ class Translator {
         const text = this.inputField.value;
         const replacedText = this.replace(text);
         const textArr = Array.from(replacedText);
-        const newTextArr = this.changeChandC(textArr);
-        const translatedText = this.translateText(newTextArr);
-        this.outputField.innerHTML = translatedText;
+        const newTextArr = this.changeC(textArr);
+        const translatedText = this.translateTextWithIcons(newTextArr);
+        const reversedText = this.reverse(translatedText)
+        this.outputField.innerHTML = reversedText;
     }
 }
